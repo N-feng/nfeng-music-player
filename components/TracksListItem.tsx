@@ -1,6 +1,6 @@
 // import { TrackShortcutsMenu } from '@/components/TrackShortcutsMenu'
 // import { StopPropagation } from '@/components/utils/StopPropagation'
-import { unknownTrackImageUri } from '@/constants/Images'
+// import { unknownTrackImageUri } from '@/constants/Images'
 import unknownTrackImage from '@/assets/unknown_track.png'
 import { colors, fontSize } from '@/constants/Tokens'
 import { defaultStyles } from '@/styles'
@@ -12,7 +12,7 @@ import { Track, useActiveTrack, useIsPlaying } from 'react-native-track-player'
 import { Image as FastImage } from 'expo-image';
 
 export type TracksListItemProps = {
-	track: { title: string; image?: string; artist?: string }
+	track: Track
 	onTrackSelect: (track: any) => void
 }
 
@@ -22,7 +22,7 @@ export const TracksListItem = ({
 }: TracksListItemProps) => {
 	const { playing } = useIsPlaying()
 
-	const isActiveTrack = false
+	const isActiveTrack = useActiveTrack()?.url === track.url
 
 	return (
 		<TouchableHighlight onPress={() => handleTrackSelect(track)}>
@@ -39,6 +39,23 @@ export const TracksListItem = ({
 							opacity: isActiveTrack ? 0.6 : 1,
 						}}
 					/>
+
+					{isActiveTrack &&
+						(playing ? (
+							// <LoaderKit
+							// 	style={styles.trackPlayingIconIndicator}
+							// 	name="LineScaleParty"
+							// 	color={colors.icon}
+							// />
+							<div>LoaderKit</div>
+						) : (
+							<Ionicons
+								style={styles.trackPausedIndicator}
+								name="play"
+								size={24}
+								color={colors.icon}
+							/>
+						))}
 				</View>
 
 				<View

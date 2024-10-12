@@ -12,8 +12,8 @@ export const useLogTrackPlayerState = () => {
 			console.log('Playback state: ', event.state)
 		}
 
-		// if (event.type === Event.PlaybackActiveTrackChanged) {
-		// 	console.log('Track changed', event.index)
-		// }
+		if (event.type === Event.PlaybackActiveTrackChanged) {
+			console.log('Track changed', event.index)
+		}
 	})
 }
