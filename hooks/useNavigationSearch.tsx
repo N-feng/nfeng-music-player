@@ -23,7 +23,7 @@ export const useNavigationSearch = ({
 
 	// useLayoutEffect(() => {
 	useEffect(() => {
-				console.log('searchBarOptions: ', searchBarOptions);
+		console.log('searchBarOptions: ', searchBarOptions);
 		navigation.setOptions({
 			headerSearchBarOptions: {
 				...defaultSearchOptions,

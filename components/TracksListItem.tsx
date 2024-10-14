@@ -33,7 +33,7 @@ export const TracksListItem = ({
 						// 	uri: track.image ?? unknownTrackImageUri,
 						// 	priority: FastImage.priority.normal,
 						// }}
-						source={track.image ?? unknownTrackImage}
+						source={track.artwork ?? unknownTrackImage}
 						style={{
 							...styles.trackArtworkImage,
 							opacity: isActiveTrack ? 0.6 : 1,
@@ -47,7 +47,7 @@ export const TracksListItem = ({
 							// 	name="LineScaleParty"
 							// 	color={colors.icon}
 							// />
-							<div>LoaderKit</div>
+							<div style={styles.trackPlayingIconIndicator}>LoaderKit</div>
 						) : (
 							<Ionicons
 								style={styles.trackPausedIndicator}
