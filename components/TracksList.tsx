@@ -32,12 +32,8 @@ export const TracksList = ({
 		const trackIndex = tracks.findIndex((track) => track.url === selectedTrack.url)
 
 		if (trackIndex === -1) return
-		console.log('trackIndex: ', trackIndex);
 
 		const isChangingQueue = id !== activeQueueId
-		console.log('isChangingQueue: ', isChangingQueue);
-		console.log('activeQueueId: ', activeQueueId);
-		console.log('id: ', id);
 
 		if (isChangingQueue) {
 			const beforeTracks = tracks.slice(0, trackIndex)
