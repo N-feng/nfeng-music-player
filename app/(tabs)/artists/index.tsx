@@ -1,44 +1,112 @@
-import { TracksList } from '../../../components/TracksList'
+// import { unknownArtistImageUri } from '@/constants/Images'
 import { screenPadding } from '@/constants/Tokens'
-// import { trackTitleFilter } from '@/helpers/filter'
-// import { generateTracksListId } from '@/helpers/miscellaneous'
-// import { useNavigationSearch } from '@/hooks/useNavigationSearch'
-// import { useTracks } from '@/store/library'
-import { defaultStyles } from '@/styles'
-// import { useMemo } from 'react'
-import { ScrollView, View } from 'react-native'
+import { artistNameFilter } from '@/helpers/filter'
+import { useNavigationSearch } from '@/hooks/useNavigationSearch'
+import { useArtists } from '@/store/library'
+import { defaultStyles, utilsStyles } from '@/styles'
+import { Link } from 'expo-router'
+import { useMemo } from 'react'
+import { FlatList, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
+// import FastImage from 'react-native-fast-image'
+import { Image as FastImage } from 'expo-image';
+import unknownArtistImage from '@/assets/unknown_artist.png'
+import { ScrollView } from 'react-native-gesture-handler'
 
+const ItemSeparatorComponent = () => {
+	return <View style={[utilsStyles.itemSeparator, { marginLeft: 50, marginVertical: 12 }]} />
+}
 
+const ArtistsScreen = () => {
+	const search = useNavigationSearch({
+		searchBarOptions: {
+			placeholder: 'Find in artists',
+		},
+	})
 
-const SongsScreen = () => {
-	// const search = useNavigationSearch({
-	// 	searchBarOptions: {
-	// 		placeholder: 'Find in songs',
-	// 	},
-	// })
+	const artists = useArtists()
 
-	// const tracks = useTracks()
+	const filteredArtists = useMemo(() => {
+		if (!search) return artists
 
-	// const filteredTracks = useMemo(() => {
-	// 	if (!search) return tracksx
-
-	// 	return tracks.filter(trackTitleFilter(search))
-	// }, [search, tracks])
+		return artists.filter(artistNameFilter(search))
+	}, [artists, search])
 
 	return (
 		<View style={defaultStyles.container}>
 			<ScrollView
-				contentInsetAdjustmentBehavior="automatic"
 				style={{ paddingHorizontal: screenPadding.horizontal }}
+				contentInsetAdjustmentBehavior="automatic"
 			>
-				<TracksList
-					// id={generateTracksListId('songs', search)}
-					// tracks={filteredTracks}
+				<FlatList
+					contentContainerStyle={{ paddingTop: 10, paddingBottom: 120 }}
 					scrollEnabled={false}
+					ItemSeparatorComponent={ItemSeparatorComponent}
+					ListFooterComponent={ItemSeparatorComponent}
+					ListEmptyComponent={
+						<View>
+							<Text>No artist found</Text>
+
+							<FastImage
+								// source={{
+								// 	uri: unknownArtistImageUri,
+								// 	priority: FastImage.priority.normal,
+								// }}
+								source={{
+									uri: unknownArtistImage,
+								}}
+								style={utilsStyles.emptyContentImage}
+							/>
+						</View>
+					}
+					data={filteredArtists}
+					renderItem={({ item: artist }) => {
+						return (
+							<Link href={`/artists/${artist.name}`} asChild>
+								<TouchableHighlight activeOpacity={0.8}>
+									<View style={styles.artistItemContainer}>
+										<View>
+											<FastImage
+												// source={{
+												// 	uri: unknownArtistImageUri,
+												// 	priority: FastImage.priority.normal,
+												// }}
+												source={unknownArtistImage}
+												style={styles.artistImage}
+											/>
+										</View>
+
+										<View style={{ width: '100%' }}>
+											<Text numberOfLines={1} style={styles.artistNameText}>
+												{artist.name}
+											</Text>
+										</View>
+									</View>
+								</TouchableHighlight>
+							</Link>
+						)
+					}}
 				/>
 			</ScrollView>
 		</View>
 	)
 }
 
-export default SongsScreen
+const styles = StyleSheet.create({
+	artistItemContainer: {
+		flexDirection: 'row',
+		columnGap: 14,
+		alignItems: 'center',
+	},
+	artistImage: {
+		borderRadius: 32,
+		width: 40,
+		height: 40,
+	},
+	artistNameText: {
+		...defaultStyles.text,
+		fontSize: 17,
+		maxWidth: '80%',
+	},
+})
+
+export default ArtistsScreen
