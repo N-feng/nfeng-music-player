@@ -12,8 +12,8 @@ import { defaultStyles, utilsStyles } from '@/styles'
 import { FontAwesome } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native'
-// import FastImage from 'react-native-fast-image'
-import { Image as FastImage } from 'expo-image';
+import FastImage from 'react-native-fast-image'
+// import { Image as FastImage } from 'expo-image';
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useActiveTrack } from 'react-native-track-player'
 

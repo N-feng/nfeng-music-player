@@ -4,7 +4,8 @@ import { utilsStyles } from '@/styles'
 import { useRef } from 'react'
 import { FlatList, FlatListProps, Text, View } from 'react-native'
 import TrackPlayer, { Track } from 'react-native-track-player'
-import { Image as FastImage } from 'expo-image';
+import FastImage from 'react-native-fast-image'
+// import { Image as FastImage } from 'expo-image';
 import unknownTrackImage from '@/assets/unknown_track.png'
 import { QueueControls } from './QueueControls'
 

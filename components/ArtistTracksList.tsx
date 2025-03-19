@@ -7,8 +7,8 @@ import { useNavigationSearch } from '@/hooks/useNavigationSearch'
 import { defaultStyles } from '@/styles'
 import { useMemo } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-// import FastImage from 'react-native-fast-image'
-import { Image as FastImage } from 'expo-image';
+import FastImage from 'react-native-fast-image'
+// import { Image as FastImage } from 'expo-image';
 import unknownArtistImage from '@/assets/unknown_artist.png'
 import { QueueControls } from './QueueControls'
 import { TracksList } from './TracksList'

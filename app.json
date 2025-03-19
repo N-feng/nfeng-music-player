@@ -1,35 +1,33 @@
 {
   "expo": {
-    "name": "music-player",
-    "slug": "music-player",
+    "name": "nfeng-music-player",
+    "slug": "nfeng-music-player",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "userInterfaceStyle": "dark",
-    "scheme": "music-player",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#000"
+      "backgroundColor": "#ffffff"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.music.player",
-      "infoPlist": {
-        "UIBackgroundModes": [
-          "audio"
-        ]
-      }
+      "bundleIdentifier": "com.anonymous.nfengmusicplayer",
+			"infoPlist": {
+				"UIBackgroundModes": ["audio"]
+			}
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#000"
+        "backgroundColor": "#ffffff"
       },
-      "package": "com.music.player"
+      "package": "com.anonymous.nfengmusicplayer"
     },
     "web": {
       "bundler": "metro",
@@ -41,7 +39,7 @@
     ],
     "experiments": {
       "typedRoutes": true,
-      "tsconfigPaths": true
+			"tsconfigPaths": true
     }
   }
 }

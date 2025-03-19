@@ -3,8 +3,8 @@ import { Playlist } from '@/helpers/types'
 import { defaultStyles } from '@/styles'
 import { AntDesign } from '@expo/vector-icons'
 import { StyleSheet, Text, TouchableHighlight, TouchableHighlightProps, View } from 'react-native'
-// import FastImage from 'react-native-fast-image'
-import { Image as FastImage } from 'expo-image';
+import FastImage from 'react-native-fast-image'
+// import { Image as FastImage } from 'expo-image';
 
 type PlaylistListItemProps = {
 	playlist: Playlist

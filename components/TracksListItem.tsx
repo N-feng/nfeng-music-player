@@ -1,15 +1,15 @@
 import { TrackShortcutsMenu } from '@/components/TrackShortcutsMenu'
 import { StopPropagation } from '@/components/utils/StopPropagation'
-// import { unknownTrackImageUri } from '@/constants/Images'
-import unknownTrackImage from '@/assets/unknown_track.png'
+import { unknownTrackImageUri } from '@/constants/Images'
+// import unknownTrackImage from '@/assets/unknown_track.png'
 import { colors, fontSize } from '@/constants/Tokens'
 import { defaultStyles } from '@/styles'
 import { Entypo, Ionicons } from '@expo/vector-icons'
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native'
-// import FastImage from 'react-native-fast-image'
+import FastImage from 'react-native-fast-image'
 import LoaderKit from 'react-native-loader-kit'
 import { Track, useActiveTrack, useIsPlaying } from 'react-native-track-player'
-import { Image as FastImage } from 'expo-image';
+// import { Image as FastImage } from 'expo-image';
 
 export type TracksListItemProps = {
 	track: Track
@@ -29,11 +29,11 @@ export const TracksListItem = ({
 			<View style={styles.trackItemContainer}>
 				<View>
 					<FastImage
-						// source={{
-						// 	uri: track.image ?? unknownTrackImageUri,
-						// 	priority: FastImage.priority.normal,
-						// }}
-						source={track.artwork ?? unknownTrackImage}
+						source={{
+							uri: track.image ?? unknownTrackImageUri,
+							priority: FastImage.priority.normal,
+						}}
+						// source={track.artwork ?? unknownTrackImage}
 						style={{
 							...styles.trackArtworkImage,
 							opacity: isActiveTrack ? 0.6 : 1,
@@ -42,12 +42,12 @@ export const TracksListItem = ({
 
 					{isActiveTrack &&
 						(playing ? (
-							// <LoaderKit
-							// 	style={styles.trackPlayingIconIndicator}
-							// 	name="LineScaleParty"
-							// 	color={colors.icon}
-							// />
-							<div style={styles.trackPlayingIconIndicator}>LoaderKit</div>
+							<LoaderKit
+								style={styles.trackPlayingIconIndicator}
+								name="LineScaleParty"
+								color={colors.icon}
+							/>
+							// <div style={styles.trackPlayingIconIndicator}>LoaderKit</div>
 						) : (
 							<Ionicons
 								style={styles.trackPausedIndicator}

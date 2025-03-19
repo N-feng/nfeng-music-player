@@ -7,10 +7,11 @@ import { defaultStyles, utilsStyles } from '@/styles'
 import { Link } from 'expo-router'
 import { useMemo } from 'react'
 import { FlatList, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
-// import FastImage from 'react-native-fast-image'
-import { Image as FastImage } from 'expo-image';
+import FastImage from 'react-native-fast-image'
+// import { Image as FastImage } from 'expo-image';
 import unknownArtistImage from '@/assets/unknown_artist.png'
-import { ScrollView } from 'react-native-gesture-handler'
+// import { ScrollView } from 'react-native-gesture-handler'
+import { ScrollView } from 'react-native'
 
 const ItemSeparatorComponent = () => {
 	return <View style={[utilsStyles.itemSeparator, { marginLeft: 50, marginVertical: 12 }]} />

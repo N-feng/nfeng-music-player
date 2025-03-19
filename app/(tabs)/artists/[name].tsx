@@ -4,7 +4,8 @@ import { useArtists } from '@/store/library'
 import { defaultStyles } from '@/styles'
 import { Redirect, useLocalSearchParams } from 'expo-router'
 import { View } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
+// import { ScrollView } from 'react-native-gesture-handler'
+import { ScrollView } from 'react-native'
 
 const ArtistDetailScreen = () => {
 	const { name: artistName } = useLocalSearchParams<{ name: string }>()

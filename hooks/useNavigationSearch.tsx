@@ -21,8 +21,8 @@ export const useNavigationSearch = ({
 		setSearch(text)
 	}
 
-	// useLayoutEffect(() => {
-	useEffect(() => {
+	useLayoutEffect(() => {
+	// useEffect(() => {
 		navigation.setOptions({
 			headerSearchBarOptions: {
 				...defaultSearchOptions,

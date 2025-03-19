@@ -6,8 +6,8 @@ import { useNavigationSearch } from '@/hooks/useNavigationSearch'
 import { utilsStyles } from '@/styles'
 import { useMemo } from 'react'
 import { FlatList, FlatListProps, Text, View } from 'react-native'
-// import FastImage from 'react-native-fast-image'
-import { Image as FastImage } from 'expo-image';
+import FastImage from 'react-native-fast-image'
+// import { Image as FastImage } from 'expo-image';
 import unknownTrackImage from '@/assets/unknown_track.png'
 
 type PlaylistsListProps = {
